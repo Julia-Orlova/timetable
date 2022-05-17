@@ -11,7 +11,9 @@ footer: "ECL 2.0 Licensed | Copyright © [YYYY] [Your Name]"
 
 *студентка 3-го курсу, групи ІВ-92* 
 
-**Юлія Орлова** (email: **julia.australia28@gmail.com**, tg: **https://t.me/j_ulia_orlov_a**)
+**Юлія Орлова** 
+**email: julia.australia28@gmail.com**
+**tg: https://t.me/j_ulia_orlov_a**
 
 
 **Керівник**
