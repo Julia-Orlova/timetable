@@ -1,86 +1,70 @@
 # Проєктування системи
 
+[Модель прецедентів](#1)
 
-Вбудовування зображень діаграм здійснюється з використанням сервісу [plantuml.com](https://plantuml.com/). 
+[Сценарій взаємодії користувача: знайти розклад занять/сесії](#2)
 
-В markdown-файлі використовується опис діаграми
+[Сценарій адміна: оновити розклад занять/сесії](#3)
 
-```md
+[Основні вимоги до системи](#4)
 
-<center style="
-    border-radius:4px;
-    border: 1px solid #cfd7e6;
-    box-shadow: 0 1px 3px 0 rgba(89,105,129,.05), 0 1px 1px 0 rgba(0,0,0,.025);
-    padding: 1em;"
->
+[Data flow diagram](#5)
 
-@startuml
+### <a name="1">Модель прецедентів
 
-participant Client
+![image](https://user-images.githubusercontent.com/66700142/169241271-2461a6c5-edc3-45d1-a308-d08401115353.png)
 
-participant SR as "Service Registry"
+    @startuml
+    :Користувач: as user
+    :Адмін: as admin
+    user --> (Знайти розклад\nзанять/сесії)
+    admin --> (Оновити розклад\nзанять/сесії)
+    @enduml
 
-participant Service
+### <a name="2">Сценарій взаємодії користувача: знайти розклад занять/сесії
 
-Service -> SR : register
-SR -> SR
-SR --> Service
-...
-
-SR -> Service: heartbeat
-SR <-- Service: health
-...
-
-Client -> SR: find
-Client <-- SR: service endpoint
-Client -> Service: request
-Client <-- Service: response
-
-
-
-@enduml
-
-</center>
-```
-
-яка буде відображена наступним чином
-
-<center style="
-    border-radius:4px;
-    border: 1px solid #cfd7e6;
-    box-shadow: 0 1px 3px 0 rgba(89,105,129,.05), 0 1px 1px 0 rgba(0,0,0,.025);
-    padding: 1em;"
->
-
-@startuml
+![image](https://user-images.githubusercontent.com/66700142/169243712-255daff5-b2eb-422d-98b1-4a46b6238781.png)
 
     @startuml
 
-participant Client
+    |Користувач|
+    start
+    :Вводить дані;
 
-participant SR as "Service Registry"
+    |Система|
+    :Шукає розклад за\nвказаними критеріями;
+    :Надає знайдений розклад;
 
-participant Service
+    |Користувач|
+    stop
 
-Service -> SR : register
-SR -> SR
-SR --> Service
-...
+    @enduml
 
-SR -> Service: heartbeat
-SR <-- Service: health
-...
+### <a name="3">Сценарій адміна: оновити розклад занять/сесії
 
-Client -> SR: find
-Client <-- SR: service endpoint
-Client -> Service: request
-Client <-- Service: response
+![image](https://user-images.githubusercontent.com/66700142/169244214-6ff10f27-a1ca-44ca-8135-49ec5d657733.png)
 
 
+    @startuml
+    
+    |Адмін|
+    start
+    :Змінює дані;
+    
+    |Система|
+    :Оновлює дані;
+    
+    |Адмін|
+    stop
+    
+    @enduml
 
-@enduml
+### <a name="4">Основні вимоги до системи:
 
-</center>
+1. Користувач повинен мати можливість знайти розклад занять певної навчальної групи, увівши її назву.
+2. Користувач повинен мати можливість знайти розклад занять окремого викладача, увівши його ПІД
+3. Користувач повинен мати можливість знайти розклад сесії, увівши назву навчальної групи.
+    
+### <a name="5">Data flow diagram
 
-
-
+![image](https://user-images.githubusercontent.com/66700142/169252252-49694988-bdc0-4aa8-bfdc-a130009257fb.png)
