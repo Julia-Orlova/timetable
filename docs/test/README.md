@@ -33,7 +33,7 @@
 
 В файлі package.json додамо скрипт для тестування:
   
-![image](https://user-images.githubusercontent.com/66700142/171200986-c1ad71b7-0211-4861-9090-c251906ba713.png)
+![image](https://user-images.githubusercontent.com/66700142/171204508-1537769a-1479-46f7-af30-23e76309ec92.png)
 
 Тепер за допомогою команди **```npm test```** jest знайде всі файли, що в назві містять ***.test*** та запустить тестування.
   
