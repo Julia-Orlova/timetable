@@ -44,4 +44,5 @@ app.use("/api", router)
 // after starting the server, we display a message on the console that the server is running
 let server = app.listen(config.server.port,console.log(`** EDU JACE server starts at port ${config.server.port}`))
 
+// the server.js module exports the server variable, which we will use in the test to programmatically stop the server
 module.exports = server
