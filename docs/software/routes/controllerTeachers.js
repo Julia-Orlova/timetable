@@ -39,7 +39,7 @@ let _create = options => {
   return last( Teachers )
 }
 
-/* The _delete instance delete function accepts the options parameter, which contains information about the instance 
+/* the _delete instance delete function accepts the options parameter, which contains information about the instance 
 * of the model to be deleted. using findIndex we search for the index of the instance that needs to be deleted. 
 * If an instance is found, delete it using the splice array method. The function returns a deleted instance.
 */
