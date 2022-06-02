@@ -1,13 +1,22 @@
+// import the server variable from our server
 const server = require("../server")
+// import axios
 const axios = require("axios")
 
+// determine the link to the end point of our service and start testing
 const endpoint = "http://localhost:8080/api/groups"
 
+// use afterAll to determine the handler that will run after all the tests
 afterAll( () => server.close())
 
-
+// define a test to check data reading (read entities)
 describe("read entities", () => {
   
+  /* with axios make a GET request at http://localhost:8080/api/groups (axios.get returns promise)
+  * Define a then handler for this promise, which is activated when the promise is triggered (axios.get returns the query result). 
+  * The handler then also returns a promise. In this handler, use expect (testedValue>).toBe (<expectedValue>) to verify that 
+  * the length of the collection is 6. That is, we read the entire data collection.
+  */
   test("read complete collection without options", () => axios.get(endpoint)
     .then( resp => expect(resp.data.length).toBe(6) )
   )
@@ -16,6 +25,11 @@ describe("read entities", () => {
     .then( resp => expect(resp.data.length).toBe(6))
   )
 
+  /* with axios make a GET request at http://localhost:8080/api/groups (axios.get returns promise)
+  Define a then handler for this promise, which is activated when the promise is triggered (axios.get returns the query result). 
+  The handler then also returns a promise. In this handler, use expect (testedValue>).toBe (<expectedValue>) to verify that 
+  the name of the collection is "IV91". That is, we read an instance of the collection with the name "IV91".
+  */
   test("read one entity by id from params", () => axios.get(`${endpoint}/1`)
     .then( resp => expect(resp.data.name).toBe("IV91"))
   )
@@ -30,6 +44,16 @@ describe("read entities", () => {
 
 })  
 
+// define a test to test the CRUD-interface in the workflow (CRUD test)
+
+/* A new copy of the data is being created. Its unique identifier is stored in the entityId variable, which is used to 
+* verify the results of other operations.
+* The whole collection is read, its length is checked.
+* The data instance is being updated.
+* It is read and checked.
+* The data instance is deleted.
+* The whole collection is read again and its length is checked.
+*/
 describe("test CRUD", () => {
   let entityId
   test("create, update, delete workflow", () => axios.post(endpoint,{
