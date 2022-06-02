@@ -13,7 +13,7 @@ const { v4 } = require("uuid")
 */
 let _read = options => ( options && !isUndefined( options.id ) ) ? Groups.filter(g => g.id == options.id)[0] : Groups
 
-/* The _update update function accepts the options parameter, which contains information about the instance of the model to be updated. 
+// The _update update function accepts the options parameter, which contains information about the instance of the model to be updated. 
 let _update = options  => {
   let result 
   /* using the findIndex function, we search for the index of the instance that needs to be updated. If such an instance 
