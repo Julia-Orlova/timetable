@@ -1,8 +1,16 @@
+// create an instance of the router
 const router = require('express').Router()
+// import the Teacher controller
 const controllerTeachers = require("./controllerTeachers")
+// import the Group controller
 const controllerGroups = require("./controllerGroups")
 const { extend } = require("lodash")
 
+/* endpoints are accessed in two ways: presidents and presidents /:id
+* using the methods of HTTP-requests POST (create a new instance), 
+* GET (read the model), PUT (update the instance), DELETE (delete the instance).
+* Query parameters can be passed using params, query and body
+*/
 router
  
  .post( "/teachers", ( req, res ) => {
@@ -62,4 +70,5 @@ router
    res.send(controllerGroups.delete( req.params ))
  })
 
+// export router
 module.exports = router 
